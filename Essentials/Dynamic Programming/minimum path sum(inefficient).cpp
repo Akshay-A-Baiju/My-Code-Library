@@ -28,6 +28,6 @@ int main()
 		for (ll j=1;j<m;j++)
 			dp[i][j] = grid[i][j] + min(dp[i-1][j],dp[i][j-1]);
 	}
-	cout<<"Minimum cost : "<<dp[n-1][m-1];
+	cout<<"Minimum path sum : "<<dp[n-1][m-1];
 	return 0;
 }

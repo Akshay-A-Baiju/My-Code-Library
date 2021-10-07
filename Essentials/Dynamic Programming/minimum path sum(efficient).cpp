@@ -33,6 +33,6 @@ int main()
 		}
 		dp=grid[i];
 	}
-	cout<<"Minimum cost : "<<dp[m-1];
+	cout<<"Minimum path sum : "<<dp[m-1];
 	return 0;
 }

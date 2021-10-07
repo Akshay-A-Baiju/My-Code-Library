@@ -15,7 +15,7 @@ int main()
 			cin>>grid[i][j];
 	}
 	//top down Dp
-	vector <vll> dp(n,vll (n));
+	vector <vll> dp(n,vll (m));
 	//initialization
 	dp[0][0]=grid[0][0];
 	for (ll i=1;i<n;i++)

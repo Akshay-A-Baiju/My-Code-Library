@@ -7,20 +7,20 @@ using namespace std;
 #define ll	long long
 #define vll	vector <ll>
 
-bool checkForCycle(ll node, ll parent, vector <bool> &vis, vll adj[])
+bool checkForCycle_dfs(ll node, ll parent, vector <bool> &vis, vll adj[])
 {
 	vis[node]=true;
 	for (auto &it: adj[node])
 	{
 		if (!vis[it])
 		{
-			if (checkForCycle(it,node,vis,adj))     //recursive dfs call to check cycle
+			if (checkForCycle_dfs(it,node,vis,adj))     			//recursive dfs call to check cycle
 				return true;
 		}
-		else if (it!=parent)					            //if the adjacent node is already visited but is not the parent of the node, i.e. cycle exists
+		else if (it!=parent)					            	//if the adjacent node is already visited but is not the parent of the node, i.e. cycle exists
 			return true;
 	}
-	return false;								                //if no cycle found, return false
+	return false;								        //if no cycle found, return false
 }
 
 bool isCycleDFS(vll adj[], ll n)
@@ -30,7 +30,7 @@ bool isCycleDFS(vll adj[], ll n)
 	{
 		if (!vis[i])
 		{
-			if (checkForCycle(i,-1,vis,adj))	      //we need to pass the node and its parent to check for Cycle, initial node be -1
+			if (checkForCycle_dfs(i,-1,vis,adj))	      			//we need to pass the node and its parent to check for Cycle, initial node be -1
 				return true;
 		}
 	}
@@ -42,7 +42,7 @@ int main()
 	ll n,m;
 	cin>>n>>m;
 	vll adj[n+1];
-	for (ll i=1;i<=m;i++)						            //input the graph
+	for (ll i=1;i<=m;i++)						            	//input the graph
 	{
 		ll u,v;
 		cin>>u>>v;

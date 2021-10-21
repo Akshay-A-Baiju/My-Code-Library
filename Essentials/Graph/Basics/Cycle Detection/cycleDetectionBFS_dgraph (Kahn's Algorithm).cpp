@@ -1,5 +1,5 @@
 //cycle detection using BFS in a directed graph  -> KAHN'S ALGORITHM
-//TC: O(N+E)                		  -> N is time taken for visiting N nodes, and E is for traversing through the adjacent nodes overall
+//TC: O(N+E)                		    -> N is time taken for visiting N nodes, and E is for traversing through the adjacent nodes overall
 //SC: O(N+E) + O(N) + O(N)		    -> for adjacency list, indegree array and queue respectively
 
 #include<bits/stdc++.h>

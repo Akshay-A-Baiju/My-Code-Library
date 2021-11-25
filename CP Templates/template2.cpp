@@ -5,7 +5,7 @@
 // TC :
 // SC : 
 
-#include<bits/stdc++.h>
+#include "bits/stdc++.h"
 // #include<ext/pb_ds/assoc_container.hpp>
 // #include<ext/pb_ds/tree_policy.hpp>
 
@@ -20,19 +20,18 @@ using namespace std;
 #define pii                 pair <int,int>
 #define pll                 pair <ll,ll>
 #define vpll                vector <pll>
-#define ms(a,x)             memset (a,x,sizeof(a))
 #define rep(i,a,n)          for (int i=a;i<n;i++)
 #define rrep(i,n,a)         for (int i=n;i>=a;i--)
+#define fill1(a,x)          for (auto &it: a) it=x;
+#define fill2(a,x)	    for (auto &v: a) { for (auto &it: v) it=x; }
 #define pb                  push_back
 #define pf                  push_front
 #define ppb                 pop_back
 #define ff                  first
 #define ss                  second
 #define ins                 insert
-#define umap                unordered_map
-#define uset                unordered_set
-#define YY		              cout<<"YES"
-#define NN		              cout<<"NO"
+#define YY		    cout<<"YES"
+#define NN		    cout<<"NO"
 #define all(v)              v.begin(), v.end()
 #define desc()              greater <ll>()
 #define endl                "\n"   //not to be used in interactive problems
@@ -48,6 +47,11 @@ using namespace std;
 #endif
 
 const int M = 1e9+7;
+const int N = 1e5+7;
+const ll inf = 1e18;
+
+int dx[]={0,1,0,-1};
+int dy[]={1,0,-1,0};
 
 void _print(ll t) {cerr << t;}
 void _print(int t) {cerr << t;}
@@ -60,6 +64,26 @@ template <class T> void _print(set <T> v) {cerr << "[ "; for (T i : v) {_print(i
 template <class T> void _print(multiset <T> v) {cerr << "[ "; for (T i : v) {_print(i); cerr << " ";} cerr << "]";}
 template <class T, class V> void _print(map <T, V> v) {cerr << "[ "; for (auto i : v) {_print(i); cerr << " ";} cerr << "]";}
 
+struct custom_hash
+{
+    static uint64_t splitmix64(uint64_t x)
+    {
+        // http://xorshift.di.unimi.it/splitmix64.c
+        x += 0x9e3779b97f4a7c15;
+        x = (x ^ (x >> 30)) * 0xbf58476d1ce4e5b9;
+        x = (x ^ (x >> 27)) * 0x94d049bb133111eb;
+        return x ^ (x >> 31);
+    }
+    size_t operator()(uint64_t x) const
+    {
+        static const uint64_t FIXED_RANDOM = chrono::steady_clock::now().time_since_epoch().count();
+        return splitmix64(x + FIXED_RANDOM);
+    }
+};
+template <class T, class H> using umap=unordered_map<T,H,custom_hash>;
+template <class T> using uset=unordered_set<T,custom_hash>;
+
+
 void solve()
 {
 	
@@ -71,7 +95,7 @@ int main()
 	#ifndef ONLINE_JUDGE
 		// freopen("input.txt","r",stdin);
 		// freopen("output.txt","w",stdout);
-		// freopen("error.txt","w",stderr);
+		freopen("error.txt","w",stderr);
 		clock_t clk = clock();
 	#endif
 	sync;

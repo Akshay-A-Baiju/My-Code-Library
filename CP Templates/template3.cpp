@@ -71,7 +71,7 @@ template<typename T> ostream& operator <<(ostream &out,const vector<T> &v){ for(
 template<typename T1,typename T2> istream& operator >>(istream &in,pair<T1,T2> &p){ in>>p.first>>p.second; return in;}
 template<typename T1,typename T2> ostream& operator <<(ostream &out,const pair<T1,T2> &p){ out<<p.first<<' '<<p.second; return out;}
 
-ll gcd(ll a, ll b) 	       {if (b == 0) {return a;} return gcd(b,a%b);}
+ll gcd(ll a, ll b) 	       {while (b) {a %= b; swap(a,b);} return a;}
 ll lcm(ll a, ll b) 	       {ll g=gcd(a,b); ll res=a*(b/g); return res;}
 ll binExp(ll a, ll b, ll m=M)  {a = a % m; ll res = 1; while (b) {if (b&1) {res=(res * a) % m;} a=(a * a) % m; b>>=1;} return res;}
 ll mod_add(ll a, ll b, ll m=M) {a = a % m; b = b % m; return (((a + b) % m) + m) % m;}

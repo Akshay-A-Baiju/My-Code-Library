@@ -17,7 +17,7 @@ using namespace __gnu_pbds;
 
 #define ll long long
 #define ull unsigned long long
-#define ld long double
+#define ld double
 #define vi vector <int>
 #define vll vector <ll>
 #define vvll vector <vll>
@@ -25,8 +25,6 @@ using namespace __gnu_pbds;
 #define pii pair <int,int>
 #define pll pair <ll,ll>
 #define vpll vector <pll>
-#define rep(i,a,n) for (int i=a;i<n;i++)
-#define rrep(i,n,a) for (int i=n;i>=a;i--)
 #define fill1(a,x) for (auto &it: a) it=x;
 #define fill2(a,x) for (auto &v: a) { for (auto &it: v) it=x; }
 #define pb push_back
@@ -35,17 +33,27 @@ using namespace __gnu_pbds;
 #define ff first
 #define ss second
 #define ins insert
+#define mkp make_pair
+#define lb lower_bound
+#define ub upper_bound
 #define YY cout<<"YES"
 #define NN cout<<"NO"
+#define set_bits __builtin_popcountll
+#define sz(v) (ll)v.size()
 #define all(v) v.begin(), v.end()
 #define allr(v) v.rbegin(), v.rend()
 #define desc() greater <ll>()
 #define endl "\n"   //not to be used in interactive problems
 #define random(l,r,T) uniform_int_distribution<T>(l,r)(rng)
 #define sync ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
-#define oset tree <ll,null_type,less<ll>,rb_tree_tag,tree_order_statistics_node_update> // find_by_order, order_of_key
 
 mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
+
+// ******Policy based data structures******
+template<class T> using oset = tree<T,null_type,less<T>,rb_tree_tag,tree_order_statistics_node_update>;
+template<class key, class value> using omap = tree <key,value,less<key>,rb_tree_tag,tree_order_statistics_node_update>;
+// find_by_order(k) -> returns iterator to kth element from start 0
+// order_of_key(k) -> returns count of elements < k
 
 #ifndef ONLINE_JUDGE
 	#define debug(x)	    cerr<<#x<<" = "; _print(x); cerr<<"\n";
@@ -54,10 +62,11 @@ mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
 #endif
 
 const int M = 1e9+7;
-const int MOD = 998244353;
-const int N = 1e5+7;
+const int MM = 998244353;
+const int N = 2e5+7;
 const ll inf = 1e18;
-const ld eps = 1e-6;
+const ld eps = 1e-9;
+#define PI 3.141592653589793238462
 
 int dx[]={0,1,0,-1};	//{0,1,1,1,0,-1,-1,-1};
 int dy[]={1,0,-1,0};	//{1,1,0,-1,-1,-1,0,1};
@@ -67,6 +76,7 @@ void _print(int t) { cerr<<t; }
 void _print(ld t) { cerr<<t; }
 void _print(string t) { cerr<<t; }
 void _print(char t) { cerr<<t; }
+void init_usaco() { freopen("input.txt","r",stdin); freopen("output.txt","w",stdout); }
 
 template <class T, class V> void _print(pair <T, V> p) {cerr << "{"; _print(p.ff); cerr << ","; _print(p.ss); cerr << "}";}
 template <class T> void _print(vector <T> v) {cerr << "[ "; for (T i : v) {_print(i); cerr << " ";} cerr << "]";}
@@ -121,6 +131,7 @@ int main()
 		// freopen("error.txt","w",stderr);
 		clock_t clk = clock();
 	#endif
+	// init_usaco();
 	sync;
 	int t=1;
 	cin>>t;
@@ -131,7 +142,7 @@ int main()
 		cout<<endl;
 	}
 	#ifndef ONLINE_JUDGE
-		cerr << '\n'<<"Time (in s): " << double(clock() - clk) * 1.0 / CLOCKS_PER_SEC << '\n';
+	  	cerr << '\n'<<"Time (in s): " << double(clock() - clk) * 1.0 / CLOCKS_PER_SEC << '\n';
 	#endif
 	return 0;
 }

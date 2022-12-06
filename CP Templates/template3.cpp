@@ -56,9 +56,9 @@ template<class key, class value> using omap = tree <key,value,less<key>,rb_tree_
 // order_of_key(k) -> returns count of elements < k
 
 #ifndef ONLINE_JUDGE
-	#define debug(x)	    cerr<<#x<<" = "; _print(x); cerr<<"\n";
+    #define debug(x)        cerr<<#x<<" = "; _print(x); cerr<<"\n";
 #else
-	#define debug(x)
+    #define debug(x)
 #endif
 
 const int M = 1e9+7;
@@ -68,8 +68,8 @@ const ll inf = 1e18;
 const ld eps = 1e-9;
 #define PI 3.141592653589793238462
 
-int dx[]={0,1,0,-1};	//{0,1,1,1,0,-1,-1,-1};
-int dy[]={1,0,-1,0};	//{1,1,0,-1,-1,-1,0,1};
+int dx[]={0,1,0,-1};    //{0,1,1,1,0,-1,-1,-1};
+int dy[]={1,0,-1,0};    //{1,1,0,-1,-1,-1,0,1};
 
 void _print(ll t) { cerr<<t; }
 void _print(int t) { cerr<<t; }
@@ -93,11 +93,13 @@ ll gcd(ll a, ll b) { while (b) {a %= b; swap(a,b);} return a; }
 ll lcm(ll a, ll b) { ll g=gcd(a,b); ll res=a*(b/g); return res; }
 ll extended_gcd(ll a, ll b, ll &x, ll &y) { if (b==0) { x=1; y=0; return a; } ll x1,y1; ll g=extended_gcd(b,a%b,x1,y1); x=y1; y=x1-y1*(a/b); return g; }
 ll binExp(ll a, ll b, ll m=M) { a = a % m; ll res = 1; while (b) { if (b&1) { res=(res * a) % m; } a=(a * a) % m; b>>=1; } return res; }
-ll mod_inv(ll a, ll m=M) { a = a % m; return binExp(a,m-2,m); }		// only for prime m
+ll mod_inv(ll a, ll m=M) { a = a % m; return binExp(a,m-2,m); }        // only for prime m
 ll mod_add(ll a, ll b, ll m=M) { a = a % m; b = b % m; return (((a + b) % m) + m) % m; }
 ll mod_sub(ll a, ll b, ll m=M) { a = a % m; b = b % m; return (((a - b) % m) + m) % m; }
 ll mod_mul(ll a, ll b, ll m=M) { a = a % m; b = b % m; return (((a * b) % m) + m) % m; }
 ll mod_div(ll a, ll b, ll m=M) { a = a % m; ll binv = mod_inv(b,m); return (((a * binv) % m) + m) % m; }
+ll sqrtll(ll n) { ll lo=0,hi=1e9+7; while (hi-lo>1) { ll m=(hi+lo)/2; if (m*m<=n) { lo=m; } else { hi=m-1; }} if (hi*hi<=n) { return hi; } return lo; }
+ld sqrtld(ll n) { ld lo=0,hi=1e9+7; while (hi-lo>eps) { ld m=(hi+lo)/2; if ((n-m*m)>eps) { lo=m; } else { hi=m-eps; }} return lo; }
 
 struct custom_hash
 {
@@ -120,29 +122,29 @@ template <class T> using uset=unordered_set<T,custom_hash>;
 
 void solve()
 {
-	
+    
 }
 
 int main()
 {
-	#ifndef ONLINE_JUDGE
-		// freopen("input.txt","r",stdin);
-		// freopen("output.txt","w",stdout);
-		// freopen("error.txt","w",stderr);
-		clock_t clk = clock();
-	#endif
-	// init_usaco();
-	sync;
-	int t=1;
-	cin>>t;
-	for (int test=1;test<=t;test++)
-	{
-		// cout<<"Case #"<<test<<": ";
-		solve();
-		cout<<endl;
-	}
-	#ifndef ONLINE_JUDGE
-	  	cerr << '\n'<<"Time (in s): " << double(clock() - clk) * 1.0 / CLOCKS_PER_SEC << '\n';
-	#endif
-	return 0;
+    #ifndef ONLINE_JUDGE
+        // freopen("input.txt","r",stdin);
+        // freopen("output.txt","w",stdout);
+        freopen("error.txt","w",stderr);
+        clock_t clk = clock();
+    #endif
+    // init_usaco();
+    sync;
+    int t=1;
+    cin>>t;
+    for (int test=1;test<=t;test++)
+    {
+        // cout<<"Case #"<<test<<": ";
+        solve();
+        cout<<endl;
+    }
+    #ifndef ONLINE_JUDGE
+          cerr << '\n'<<"Time (in s): " << double(clock() - clk) * 1.0 / CLOCKS_PER_SEC << '\n';
+    #endif
+    return 0;
 }
